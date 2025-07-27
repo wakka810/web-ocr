@@ -9,7 +9,7 @@ interface MobileCameraCaptureProps {
 const MobileCameraCapture: React.FC<MobileCameraCaptureProps> = ({
   onCapture,
   isProcessing,
-  supportedFormats,
+  supportedFormats: _supportedFormats,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 

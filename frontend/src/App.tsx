@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ImageUploader from '@/components/ImageUploader'
 import MobileCameraCapture from '@/components/MobileCameraCapture'
 import RegionSelector from '@/components/RegionSelector'

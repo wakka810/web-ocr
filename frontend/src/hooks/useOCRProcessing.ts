@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { api } from '@/services/api';
 import { OCRResult, ProcessOCRRequest, ProcessOCRResponse } from '@/types';
 
@@ -89,11 +89,13 @@ export const useOCRProcessing = (): UseOCRProcessingReturn => {
   }, [clearResults, pollStatus]);
 
   // Cleanup on unmount
-  const cleanup = useCallback(() => {
-    if (pollingIntervalRef.current) {
-      clearInterval(pollingIntervalRef.current);
-      pollingIntervalRef.current = null;
-    }
+  useEffect(() => {
+    return () => {
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current);
+        pollingIntervalRef.current = null;
+      }
+    };
   }, []);
 
   // Return cleanup function for component unmount
